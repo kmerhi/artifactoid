@@ -11,19 +11,27 @@ program
 	.option('-u, --username <username>', 'The user to authenticate as')
 	.option('-p, --password <password>', 'The user\'s password')
 	.action(function (uri) {
-		const { username, password } = program;
+		const {
+			username,
+			password
+		} = program;
 
-		console.log('user: %s pass: %s uri: %s',
+		console.log('user: %s \npass: %s \nuri: %s',
 			program.username, program.password, uri);
 
-		fetch(uri, {
-				method: 'get',
-				headers: {
-					'Authorization': 'Basic ' + base64.encode(username + ':' + password)
-				},
-			})
-			.then(res => res.json())
-			.then(json => console.log(json))
-			.catch(err => console.error(err));
+		fetchArtifactList(uri, username, password)
+			.then(json => {
+				console.log(JSON.stringify(json, null, 2));
+			});
 	})
 	.parse(process.argv);
+
+async function fetchArtifactList(uri, username, password) {
+	const response = await fetch(uri, {
+		method: 'get',
+		headers: {
+			'Authorization': 'Basic ' + base64.encode(username + ':' + password)
+		},
+	});
+	return await response.json();
+}
