@@ -11,8 +11,8 @@ program
 	.version(pjson.version)
 	.arguments('<uri>')
 	.description('A command line tool to retrieve the URI of the latest artifact from an Artifactory repository')
-	.option('-u, --username <username>', 'The user to authenticate as')
-	.option('-p, --password <password>', 'The user\'s password')
+	.option('-u, --username <username>', 'User for basic authentication')
+	.option('-p, --password <password>', 'Password or API Key for basic authentication')
 	.action(uri => {
 		let {
 			username,
