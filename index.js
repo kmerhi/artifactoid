@@ -5,9 +5,10 @@ var fetch = require('node-fetch');
 var base64 = require('base-64');
 var chalk = require('chalk');
 var naturalSort = require('natural-sort');
+var pjson = require('./package.json');
 
 program
-	.version('0.1.1')
+	.version(pjson.version)
 	.arguments('<uri>')
 	.description('A command line tool to retrieve the URI of the latest artifact from an Artifactory repository')
 	.option('-u, --username <username>', 'The user to authenticate as')
