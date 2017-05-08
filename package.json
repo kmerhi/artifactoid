@@ -4,7 +4,8 @@
   "description": "A command line tool to retrieve the URI of the latest artifact from an Artifactory repository",
   "main": "index.js",
   "scripts": {
-    "test": "eslint ./src/index.js && jest"
+    "test": "eslint ./src/index.js && jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "bin": {
     "artifactoid": "./src/index.js"
@@ -33,5 +34,11 @@
     "eslint": "^3.19.0",
     "jest": "^20.0.0",
     "regenerator-runtime": "^0.10.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ]
   }
 }
