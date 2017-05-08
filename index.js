@@ -14,6 +14,7 @@ program
 	.option('-u, --username <username>', 'user to connect to Artifactory repo')
 	.option('-p, --password <password>', 'password (or API key) for basic auth')
 	.action(uri => {
+		uriParam = uri;
 		const creds = getCreds(program);
 
 		getDownloadUri(uri, creds)
@@ -30,6 +31,11 @@ program
 			});
 	})
 	.parse(process.argv);
+
+if (typeof uriParam === 'undefined') {
+	console.error(chalk.bgRed.white(' ERROR '), 'uri is required');
+	process.exit(1);
+}
 
 async function fetchUri(uri, username, password) {
 	const options = {
