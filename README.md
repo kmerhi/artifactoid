@@ -3,6 +3,7 @@
 <!--[![NPM Version](http://img.shields.io/npm/v/artifactoid.svg)](https://www.npmjs.org/package/artifactoid)-->
 [![Build Status](https://travis-ci.org/kmerhi/artifactoid.svg?branch=master)](https://travis-ci.org/kmerhi/artifactoid)
 [![Coverage Status](https://coveralls.io/repos/github/kmerhi/artifactoid/badge.svg?branch=master)](https://coveralls.io/github/kmerhi/artifactoid?branch=master)
+[![](https://img.shields.io/badge/unicorn-approved-ff69b4.svg)](https://www.youtube.com/watch?v=9auOCbH5Ns4)
 
 A command line experimental tool to retrieve the latest SNAPSHOT URI of an artifact given its Artifactory path.
 
