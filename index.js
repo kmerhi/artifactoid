@@ -6,6 +6,33 @@ var base64 = require('base-64');
 var chalk = require('chalk');
 var naturalSort = require('natural-sort');
 
+program
+	.arguments('<uri>')
+	.version('0.0.2')
+	.description('A command line tool to retrieve that URI to the latest artifact from an Artifactory repo')
+	.option('-u, --username <username>', 'The user to authenticate as')
+	.option('-p, --password <password>', 'The user\'s password')
+	.action(uri => {
+		const {
+			username,
+			password
+		} = program;
+
+		getDownloadUri(uri, username, password)
+			.then(url => {
+				console.log(url);
+				process.exit(0);
+			})
+			.catch((err) => {
+				for (let i = 0; i < err.length; i++) {
+					const error = err[i];
+					console.error(chalk.bgRed.white(' ERROR '), error.message + ' (' + error.status + ')');
+				}
+				process.exit(1);
+			});
+	})
+	.parse(process.argv);
+
 async function fetchUri(uri, username, password) {
 	const response = await fetch(uri, {
 		method: 'get',
@@ -41,30 +68,3 @@ async function getDownloadUri(uri, username, password) {
 		return json.downloadUri;
 	}
 }
-
-program
-	.arguments('<uri>')
-	.version('0.0.2')
-	.description('A command line tool to retrieve that URI to the latest artifact from an Artifactory repo')
-	.option('-u, --username <username>', 'The user to authenticate as')
-	.option('-p, --password <password>', 'The user\'s password')
-	.action(uri => {
-		const {
-			username,
-			password
-		} = program;
-
-		getDownloadUri(uri, username, password)
-			.then(url => {
-				console.log(url);
-				process.exit(0);
-			})
-			.catch((err) => {
-				for (let i = 0; i < err.length; i++) {
-					const error = err[i];
-					console.error(chalk.bgRed.white(' ERROR '), error.message + ' (' + error.status + ')');
-				}
-				process.exit(1);
-			});
-	})
-	.parse(process.argv);
