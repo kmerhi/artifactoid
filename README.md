@@ -1,6 +1,7 @@
 # Artifactoid
 
 [![NPM Version](http://img.shields.io/npm/v/artifactoid.svg?style=flat-square)](https://www.npmjs.org/package/artifactoid)
+[![Build Status](https://travis-ci.org/kmerhi/artifactoid.svg?branch=master)](https://travis-ci.org/kmerhi/artifactoid)
 
 A command line experimental tool to retrieve the latest SNAPSHOT URI of an artifact given its Artifactory path.
 
