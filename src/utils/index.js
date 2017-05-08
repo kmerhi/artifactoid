@@ -5,7 +5,7 @@ module.exports = {
 	getNextUri
 };
 
-function getCredentials(program) {
+function getCredentials(program = {}) {
 	let {
 		username,
 		password
