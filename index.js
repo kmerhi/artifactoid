@@ -13,10 +13,14 @@ program
 	.option('-u, --username <username>', 'The user to authenticate as')
 	.option('-p, --password <password>', 'The user\'s password')
 	.action(uri => {
-		const {
+		let {
 			username,
 			password
 		} = program;
+
+		if (username && username.indexOf(':') > 0) {
+			[username, password] = username.split(':')
+		}
 
 		getDownloadUri(uri, username, password)
 			.then(url => {
