@@ -1,11 +1,13 @@
 #!/usr/bin/env node --harmony
 
-var program = require('commander');
-var fetch = require('node-fetch');
-var base64 = require('base-64');
-var chalk = require('chalk');
-var naturalSort = require('natural-sort');
-var pjson = require('../package.json');
+const program = require('commander');
+const fetch = require('node-fetch');
+const chalk = require('chalk');
+const base64 = require('base-64');
+const pjson = require('../package.json');
+const utils = require('./utils/index.js');
+
+let uriParam;
 
 program
 	.version(pjson.version)
@@ -15,9 +17,9 @@ program
 	.option('-p, --password <password>', 'password (or API key) for basic auth')
 	.action(uri => {
 		uriParam = uri;
-		const creds = getCreds(program);
+		const credentials = utils.getCredentials(program);
 
-		getDownloadUri(uri, creds)
+		getDownloadUri(uri, credentials)
 			.then(url => {
 				console.log(url);
 				process.exit(0);
@@ -64,48 +66,9 @@ async function getDownloadUri(uri, creds) {
 	let children = json.children;
 
 	if (children) {
-		const nextUri = getNextUri(uri, children);
+		const nextUri = utils.getNextUri(uri, children);
 		return await getDownloadUri(nextUri, creds);
 	} else {
 		return json.downloadUri;
 	}
-}
-
-function getCreds(program) {
-	let {
-		username,
-		password
-	} = program;
-
-	if (username && username.indexOf(':') > 0) {
-		[username, password] = username.split(':')
-	}
-
-	return {
-		username,
-		password
-	};
-}
-
-function getNextUri(uri, children) {
-	// Proper natural sorting will bring the newest resource to the top
-	children = getSortedChildren(children);
-	const nextResource = children[0];
-
-	return uri + nextResource.uri
-}
-
-function getSortedChildren(children) {
-	return children.filter(nonPomOrXmlUri).sort(naturalSortUri);
-}
-
-function nonPomOrXmlUri(object) {
-	return !object.uri.endsWith('.pom') &&
-		!object.uri.endsWith('.xml');
-}
-
-function naturalSortUri(o1, o2) {
-	return naturalSort({
-		direction: 'desc'
-	})(o1.uri, o2.uri)
 }
