@@ -5,7 +5,7 @@ var fetch = require('node-fetch');
 var base64 = require('base-64');
 var chalk = require('chalk');
 var naturalSort = require('natural-sort');
-var pjson = require('./package.json');
+var pjson = require('../package.json');
 
 program
 	.version(pjson.version)
