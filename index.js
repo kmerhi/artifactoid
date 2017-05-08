@@ -31,22 +31,6 @@ program
 	})
 	.parse(process.argv);
 
-function getCreds(program) {
-	let {
-		username,
-		password
-	} = program;
-
-	if (username && username.indexOf(':') > 0) {
-		[username, password] = username.split(':')
-	}
-
-	return {
-		username,
-		password
-	};
-}
-
 async function fetchUri(uri, username, password) {
 	const options = {
 		method: 'get',
@@ -79,6 +63,22 @@ async function getDownloadUri(uri, creds) {
 	} else {
 		return json.downloadUri;
 	}
+}
+
+function getCreds(program) {
+	let {
+		username,
+		password
+	} = program;
+
+	if (username && username.indexOf(':') > 0) {
+		[username, password] = username.split(':')
+	}
+
+	return {
+		username,
+		password
+	};
 }
 
 function getNextUri(uri, children) {
