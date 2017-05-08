@@ -44,7 +44,7 @@ function getCreds(program) {
 	return {
 		username,
 		password
-	}
+	};
 }
 
 async function fetchUri(uri, username, password) {
