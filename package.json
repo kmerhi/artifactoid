@@ -26,5 +26,8 @@
     "eslint": "^3.19.0",
     "natural-sort": "^1.0.0",
     "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1"
   }
 }

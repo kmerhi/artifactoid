@@ -12,7 +12,7 @@ function getCredentials(program) {
 	} = program;
 
 	if (username && username.indexOf(':') > 0) {
-		[username, password] = username.split(':')
+		[username, password] = username.split(':');
 	}
 
 	return {
@@ -26,7 +26,7 @@ function getNextUri(uri, children) {
 	children = getSortedChildren(children);
 	const nextResource = children[0];
 
-	return uri + nextResource.uri
+	return uri + nextResource.uri;
 }
 
 function getSortedChildren(children) {
@@ -41,5 +41,5 @@ function nonPomOrXmlUri(object) {
 function naturalSortUri(o1, o2) {
 	return naturalSort({
 		direction: 'desc'
-	})(o1.uri, o2.uri)
+	})(o1.uri, o2.uri);
 }
