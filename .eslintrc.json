@@ -1,13 +1,11 @@
 {
   "env": {
     "es6": true,
-    "jest": true,
     "node": true,
-    "browser": true,
-    "jquery": true
+    "browser": false
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
       "modules": true,
@@ -15,15 +13,11 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "react",
-    "jest"
-  ],
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
+    "eslint:recommended"
   ],
   "rules": {
+    "no-console": 0,
     "indent": ["warn", "tab", {
         "SwitchCase": 1
       }
@@ -40,8 +34,7 @@
         "vars": "local",
         "args": "after-used"
       }
-    ],
-    "react/prop-types": ["warn"]
+    ]
   },
   "installedESLint": true
 }
