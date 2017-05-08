@@ -7,8 +7,8 @@ var chalk = require('chalk');
 var naturalSort = require('natural-sort');
 
 program
+	.version('0.1.0')
 	.arguments('<uri>')
-	.version('0.0.2')
 	.description('A command line tool to retrieve that URI to the latest artifact from an Artifactory repo')
 	.option('-u, --username <username>', 'The user to authenticate as')
 	.option('-p, --password <password>', 'The user\'s password')

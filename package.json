@@ -1,6 +1,6 @@
 {
   "name": "artifactoid",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A command-line tool for downloading artifactory packages",
   "main": "index.js",
   "scripts": {
