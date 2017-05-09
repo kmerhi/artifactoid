@@ -1,23 +1,60 @@
 const naturalSort = require('natural-sort');
+const fetch = require('node-fetch');
+const base64 = require('base-64');
 
 module.exports = {
 	getCredentials,
-	getNextUri
+	getNextUri,
+	getDownloadUri
 };
 
-function getCredentials(program = {}) {
-	let {
-		username,
-		password
-	} = program;
+async function getDownloadUri(uri, creds) {
+	const {
+		user,
+		pass
+	} = creds;
 
-	if (username && username.indexOf(':') > 0) {
-		[username, password] = username.split(':');
+	const json = await fetchUri(uri, user, pass);
+	let children = json.children;
+
+	if (children) {
+		const nextUri = getNextUri(uri, children);
+		return await getDownloadUri(nextUri, creds);
+	} else {
+		return json.downloadUri;
+	}
+}
+
+async function fetchUri(uri, username, password) {
+	const options = {
+		method: 'get',
+		headers: {
+			'Authorization': 'Basic ' + base64.encode(username + ':' + password)
+		},
+	};
+	const response = await fetch(uri, options);
+	const body = await response.json();
+
+	if (response.status !== 200) {
+		throw body.errors;
+	}
+
+	return body;
+}
+
+function getCredentials(creds = {}) {
+	let {
+		user,
+		pass
+	} = creds;
+
+	if (user && user.indexOf(':') > 0) {
+		[user, pass] = user.split(':');
 	}
 
 	return {
-		username,
-		password
+		user,
+		pass
 	};
 }
 

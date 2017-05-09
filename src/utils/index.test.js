@@ -5,8 +5,8 @@ describe('utils', () => {
 	it('should getCredentials when no credentials passed', () => {
 		const actual = utils.getCredentials();
 		const expected = {
-			username: undefined,
-			password: undefined
+			user: undefined,
+			pass: undefined
 		};
 
 		expect(actual).toEqual(expected);
@@ -14,11 +14,11 @@ describe('utils', () => {
 
 	it('should getCredentials when concatenated input', () => {
 		const actual = utils.getCredentials({
-			username: 'potato:secret'
+			user: 'potato:secret'
 		});
 		const expected = {
-			username: 'potato',
-			password: 'secret'
+			user: 'potato',
+			pass: 'secret'
 		};
 
 		expect(actual).toEqual(expected);
