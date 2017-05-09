@@ -18,13 +18,26 @@ npm install -g artifactoid
 ## Usage 
 
 ```sh
-Usage: artifactoid [options] <uri>
+Usage: artifactoid <command> [options]
+
+Commands:
+  get <uri>  Get latest download URI for given path       [default] [aliases: g]
+  docs       Go to the documentation at github.com/kmerhi/artifactoid
 
 Options:
-  -h, --help                 output usage information
-  -V, --version              output the version number
-  -u, --username <username>  The user to authenticate as
-  -p, --password <password>  The user's password
+  --version      Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
+  -u, --user     User to connect to Artifactory repo
+  -p, --pass     Password (or API key) for basic auth
+  -v, --verbose  Show verbose output                                   [boolean]
+
+Examples:
+  artifactoid init my-project               Initialize `my-project` directory
+                                            with `default` engine
+  artifactoid init my-project --engine      Initialize `my-project` directory
+  turbo                                     with `turbo` engine
+
+For more information, go to https://github.com/kmerhi/artifactoid
 ```
 
 ## MIT License
