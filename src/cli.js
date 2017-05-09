@@ -1,11 +1,10 @@
-#!/usr/bin/env node
-
 const open = require('open');
 const yargs = require('yargs');
+const get = require('./cmds/get');
 
 yargs.version()
 	.usage('Usage: artifactoid <command> [options]')
-	.command(['get <uri>', 'g', '*'], 'Get latest download URI for given path', require('./cmds/get'))
+	.command(['get <uri>', 'g', '*'], 'Get latest download URI for given path', get)
 	.example('artifactoid init my-project', 'Initialize `my-project` directory with `default` engine')
 	.example('artifactoid init my-project --engine turbo', 'Initialize `my-project` directory with `turbo` engine')
 	.command(['docs'], 'Go to the documentation at github.com/kmerhi/artifactoid', {}, () => open('https://github.com/kmerhi/artifactoid#readme'))
