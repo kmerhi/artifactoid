@@ -4,7 +4,8 @@ const base64 = require('base-64');
 
 module.exports = {
 	getCredentials,
-	getDownloadUri
+	getDownloadUri,
+	getNextUri
 };
 
 function getCredentials(creds = {}) {
