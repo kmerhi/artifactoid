@@ -4,9 +4,24 @@ const base64 = require('base-64');
 
 module.exports = {
 	getCredentials,
-	getNextUri,
 	getDownloadUri
 };
+
+function getCredentials(creds = {}) {
+	let {
+		user,
+		pass
+	} = creds;
+
+	if (user && user.indexOf(':') > 0) {
+		[user, pass] = user.split(':');
+	}
+
+	return {
+		user,
+		pass
+	};
+}
 
 async function getDownloadUri(uri, creds) {
 	const {
@@ -40,22 +55,6 @@ async function fetchUri(uri, username, password) {
 	}
 
 	return body;
-}
-
-function getCredentials(creds = {}) {
-	let {
-		user,
-		pass
-	} = creds;
-
-	if (user && user.indexOf(':') > 0) {
-		[user, pass] = user.split(':');
-	}
-
-	return {
-		user,
-		pass
-	};
 }
 
 function getNextUri(uri, children) {
