@@ -4,7 +4,7 @@
   "description": "A command line tool to retrieve the URI of the latest artifact from an Artifactory repository",
   "preferGlobal": true,
   "bin": {
-    "artifactoid": "lib/artifactoid.js"
+    "artifactoid": "./lib/artifactoid.js"
   },
   "scripts": {
     "lint": "eslint ./src/index.js",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kmerhi/artifactoid#readme",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "base-64": "^0.1.0",
     "chalk": "^1.1.3",
     "natural-sort": "^1.0.0",
@@ -38,6 +39,7 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
     "jest": "^20.0.0",

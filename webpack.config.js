@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
 	target: 'node', // in order to ignore built-in modules like path, fs, etc. 
-	entry: './src/cli.js',
+	entry: ['babel-polyfill', './src/cli.js'],
 	output: {
 		filename: 'artifactoid.js',
-		path: path.resolve(__dirname, 'bin')
+		path: path.resolve(__dirname, './bin')
 	},
 	module: {
 		rules: [{

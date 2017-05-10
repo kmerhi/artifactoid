@@ -1,8 +1,9 @@
+const yargs = require('yargs/yargs')();
 const open = require('open');
-const yargs = require('yargs');
 const get = require('./cmds/get');
 
-yargs.version()
+yargs
+	.version()
 	.usage('Usage: artifactoid <command> [options]')
 	.command(['get <uri>', 'g', '*'], 'Get latest download URI for given path', get)
 	.example('artifactoid init my-project', 'Initialize `my-project` directory with `default` engine')
