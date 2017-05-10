@@ -13,10 +13,16 @@ exports.handler = function (argv) {
 
 	utils.getDownloadUri(uri, credentials)
 		.then(url => {
+			if (!url || url.length === 0) {
+				throw [{
+					status: 404,
+					message: 'Resource not found'
+				}];
+			}
 			console.log(url);
 			process.exit(0);
 		})
-		.catch((err) => {
+		.catch(err => {
 			for (let i = 0; i < err.length; i++) {
 				const error = err[i];
 				console.error(chalk.bgRed.white(' ERROR '), error.message + ' (' + error.status + ')');

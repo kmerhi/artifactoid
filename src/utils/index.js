@@ -30,15 +30,18 @@ function getDownloadUri(uri, creds) {
 		pass
 	} = creds;
 
-	return fetchUri(uri, user, pass).then( json => {
-		let children = json.children;
-		if (children) {
-			const nextUri = getNextUri(uri, children);
-			return getDownloadUri(nextUri, creds);
-		} else {
-			return json.downloadUri;
-		}
-	});
+	return fetchUri(uri, user, pass)
+		.then( json => {
+			let children = json.children;
+			if (children) {
+				const nextUri = getNextUri(uri, children);
+				return getDownloadUri(nextUri, creds);
+			} else {
+				return json.downloadUri;
+			}
+		}).catch( error => {
+			return error; // continue propagation
+		});
 }
 
 function fetchUri(uri, username, password) {
