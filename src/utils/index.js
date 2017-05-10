@@ -24,38 +24,37 @@ function getCredentials(creds = {}) {
 	};
 }
 
-async function getDownloadUri(uri, creds) {
+function getDownloadUri(uri, creds) {
 	const {
 		user,
 		pass
 	} = creds;
 
-	const json = await fetchUri(uri, user, pass);
-	let children = json.children;
-
-	if (children) {
-		const nextUri = getNextUri(uri, children);
-		return await getDownloadUri(nextUri, creds);
-	} else {
-		return json.downloadUri;
-	}
+	return fetchUri(uri, user, pass).then( json => {
+		let children = json.children;
+		if (children) {
+			const nextUri = getNextUri(uri, children);
+			return getDownloadUri(nextUri, creds);
+		} else {
+			return json.downloadUri;
+		}
+	});
 }
 
-async function fetchUri(uri, username, password) {
+function fetchUri(uri, username, password) {
 	const options = {
 		method: 'get',
 		headers: {
 			'Authorization': 'Basic ' + base64.encode(username + ':' + password)
 		},
 	};
-	const response = await fetch(uri, options);
-	const body = await response.json();
 
-	if (response.status !== 200) {
-		throw body.errors;
-	}
-
-	return body;
+	return fetch(uri, options).then( response => {
+		if (response.status !== 200) {
+			throw response.errors;
+		}
+		return response.json();
+	});
 }
 
 function getNextUri(uri, children) {
