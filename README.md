@@ -1,6 +1,6 @@
 # Artifactoid
 
-<!--[![NPM Version](http://img.shields.io/npm/v/artifactoid.svg)](https://www.npmjs.org/package/artifactoid)-->
+[![NPM Version](http://img.shields.io/npm/v/artifactoid.svg)](https://www.npmjs.org/package/artifactoid)
 [![Build Status](https://travis-ci.org/kmerhi/artifactoid.svg?branch=master)](https://travis-ci.org/kmerhi/artifactoid)
 [![bitHound Overall Score](https://www.bithound.io/github/kmerhi/artifactoid/badges/score.svg)](https://www.bithound.io/github/kmerhi/artifactoid)
 [![Coverage Status](https://coveralls.io/repos/github/kmerhi/artifactoid/badge.svg?branch=master)](https://coveralls.io/github/kmerhi/artifactoid?branch=master)
@@ -25,17 +25,10 @@ Commands:
   docs       Go to the documentation at github.com/kmerhi/artifactoid
 
 Options:
-  --version      Show version number                                   [boolean]
-  -h, --help     Show help                                             [boolean]
-  -u, --user     User to connect to Artifactory repo
-  -p, --pass     Password (or API key) for basic auth
-  -v, --verbose  Show verbose output                                   [boolean]
-
-Examples:
-  artifactoid init my-project               Initialize `my-project` directory
-                                            with `default` engine
-  artifactoid init my-project --engine      Initialize `my-project` directory
-  turbo                                     with `turbo` engine
+  --version   Show version number                                      [boolean]
+  -h, --help  Show help                                                [boolean]
+  -u, --user  User to connect to Artifactory repo
+  -p, --pass  Password (or API key) for basic auth
 
 For more information, go to https://github.com/kmerhi/artifactoid
 ```

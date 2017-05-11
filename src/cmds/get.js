@@ -2,9 +2,7 @@ const utils = require('../utils/index.js');
 const chalk = require('chalk');
 
 exports.builder = {
-	uri: {
-		default: 'default/path/goes/here'
-	}
+	
 };
 
 exports.handler = function (argv) {
