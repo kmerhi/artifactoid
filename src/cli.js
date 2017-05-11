@@ -3,6 +3,7 @@
 const open = require('open');
 const yargs = require('yargs');
 
+/* istanbul ignore next */
 yargs.version()
 	.usage('Usage: artifactoid <command> [options]')
 	.command(['get <uri>', 'g', '*'], 'Get latest download URI for given path', require('./cmds/get'))
