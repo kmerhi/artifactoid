@@ -1,4 +1,4 @@
-const getDownloadUri = require('./getDownloadUri');
+// const getDownloadUri = require('./getDownloadUri');
 
 describe('getDownloadUri', () => {
 

@@ -6,7 +6,7 @@ module.exports = function getNextUri(uri, children) {
 	const nextResource = children[0];
 
 	return uri + nextResource.uri;
-}
+};
 
 function getSortedChildren(children) {
 	return children.filter(nonPomOrXmlUri).sort(naturalSortUri);
