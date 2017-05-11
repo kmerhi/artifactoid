@@ -1,6 +1,6 @@
 {
   "name": "artifactoid",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A command line tool to retrieve the URI of the latest artifact from an Artifactory repository",
   "preferGlobal": true,
   "bin": {
