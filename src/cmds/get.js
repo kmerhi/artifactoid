@@ -1,15 +1,14 @@
-const utils = require('../utils/index.js');
 const chalk = require('chalk');
+const getCredentials = require('../utils/getCredentials');
+const getDownloadUri = require('../utils/getDownloadUri');
 
-exports.builder = {
-	
-};
+exports.builder = {};
 
 exports.handler = function (argv) {
 	const { uri, user, pass } = argv;
-	const credentials = utils.getCredentials({ user, pass });
+	const credentials = getCredentials({ user, pass });
 
-	utils.getDownloadUri(uri, credentials)
+	getDownloadUri(uri, credentials)
 		.then(url => console.log(url))
 		.catch(res => {
 			if (res.status === undefined) {
