@@ -31,7 +31,7 @@ function getDownloadUri(uri, creds) {
 	} = creds;
 
 	return fetchUri(uri, user, pass)
-		.then( json => {
+		.then(json => {
 			let children = json.children;
 			if (children) {
 				const nextUri = getNextUri(uri, children);
@@ -39,8 +39,6 @@ function getDownloadUri(uri, creds) {
 			} else {
 				return json.downloadUri;
 			}
-		}).catch( error => {
-			return error; // continue propagation
 		});
 }
 
@@ -52,12 +50,21 @@ function fetchUri(uri, username, password) {
 		},
 	};
 
-	return fetch(uri, options).then( response => {
-		if (response.status !== 200) {
-			throw response.errors;
-		}
-		return response.json();
-	});
+	return fetch(uri, options)
+		.then(handleErrors)
+		.then(response => {
+			if (response.status !== 200) {
+				throw response.errors;
+			}
+			return response.json();
+		});
+}
+
+function handleErrors(response) {
+	if (!response.ok) {
+		throw response;
+	}
+	return response;
 }
 
 function getNextUri(uri, children) {

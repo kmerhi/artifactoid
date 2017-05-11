@@ -12,21 +12,17 @@ exports.handler = function (argv) {
 	const credentials = utils.getCredentials({ user, pass });
 
 	utils.getDownloadUri(uri, credentials)
-		.then(url => {
-			if (!url || url.length === 0) {
-				throw [{
-					status: 404,
-					message: 'Resource not found'
-				}];
-			}
-			console.log(url);
-			process.exit(0);
-		})
-		.catch(err => {
-			for (let i = 0; i < err.length; i++) {
-				const error = err[i];
-				console.error(chalk.bgRed.white(' ERROR '), error.message + ' (' + error.status + ')');
+		.then(url => console.log(url))
+		.catch(res => {
+			if (res.status === undefined) {
+				printError(res.message);
+			} else {
+				printError(res.statusText + ' (' + res.status + ')');
 			}
 			process.exit(1);
 		});
 };
+
+function printError(message) {
+	console.error(chalk.bgRed.white(' ERROR '), message);
+}
