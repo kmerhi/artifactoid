@@ -1,6 +1,4 @@
-const fetch = require('node-fetch');
-const base64 = require('base-64');
-const handleErrors = require('./handleErrors');
+const fetchUri = require('./fetchUri');
 const getNextUri = require('./getNextUri');
 
 module.exports = function getDownloadUri(uri, creds) {
@@ -20,21 +18,3 @@ module.exports = function getDownloadUri(uri, creds) {
 			}
 		});
 };
-
-function fetchUri(uri, username, password) {
-	const options = {
-		method: 'get',
-		headers: {
-			'Authorization': 'Basic ' + base64.encode(username + ':' + password)
-		},
-	};
-
-	return fetch(uri, options)
-		.then(handleErrors)
-		.then(response => {
-			if (response.status !== 200) {
-				throw response.errors;
-			}
-			return response.json();
-		});
-}
