@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint ./src/index.js",
     "coverage": "jest --coverage",
+	"codacy" : "cat ./coverage/lcov.info | codacy-coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "yarn lint && yarn coverage && yarn coveralls"
   },
@@ -33,6 +34,7 @@
   "devDependencies": {
     "babel-jest": "^20.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "codacy-coverage": "^2.0.2",
     "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
     "jest": "^20.0.0",
