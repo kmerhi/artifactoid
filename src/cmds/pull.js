@@ -9,10 +9,10 @@ exports.handler = function (argv) {
 	const credentials = getCredentials({ user, pass });
 
 	getDownloadUri(uri, credentials)
-		.then(processUri)
+		.then(processUrl)
 		.catch(processError);
 };
 
-function processUri(url) {
+function processUrl(url) {
 	console.log(url);
 }

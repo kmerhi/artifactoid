@@ -7,6 +7,8 @@ const yargs = require('yargs');
 yargs.version()
 	.usage('Usage: artifactoid <command> [options]')
 	.command(['get <uri>', 'g', '*'], 'Get latest download URI for given path', require('./cmds/get'))
+	.command(['download <uri>', 'pull'], 'Download the latest download URI for given path', require('./cmds/pull'))
+	// .command(['upload <uri>', 'push'], 'Upload the latest download URI for given path', require('./cmds/push'))
 	.command(['docs'], 'Go to the documentation at github.com/kmerhi/artifactoid', {}, () => open('https://github.com/kmerhi/artifactoid#readme'))
 	.demandCommand(1, 'You need at least one command before moving on')
 	.help('h')
