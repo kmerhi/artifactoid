@@ -17,7 +17,7 @@ module.exports = function getDownloadUri(uri, creds, snip) {
 				let uri = json.downloadUri;
 				if (snip) {
 					let uriParts = uri.split('/artifactory/');
-					uri = '/' + uriParts[1];
+					uri = uriParts[1];
 				}
 				return uri;
 			}
