@@ -1,7 +1,7 @@
 const fetchUri = require('./fetchUri');
 const getNextUri = require('./getNextUri');
 
-module.exports = function getDownloadUri(uri, creds) {
+module.exports = function getDownloadUri(uri, creds, snip) {
 	const {
 		user,
 		pass
@@ -12,9 +12,14 @@ module.exports = function getDownloadUri(uri, creds) {
 			let children = json.children;
 			if (children) {
 				const nextUri = getNextUri(uri, children);
-				return getDownloadUri(nextUri, creds);
+				return getDownloadUri(nextUri, creds, snip);
 			} else {
-				return json.downloadUri;
+				let uri = json.downloadUri;
+				if (snip) {
+					let uriParts = uri.split('/artifactory/');
+					uri = '/' + uriParts[1];
+				}
+				return uri;
 			}
 		});
 };
