@@ -28,8 +28,9 @@ Commands:
 Options:
   --version   Show version number                                      [boolean]
   -h, --help  Show help                                                [boolean]
-  -u, --user  User to connect to Artifactory repo
-  -p, --pass  Password (or API key) for basic auth
+  -u, --user  User to connect to Artifactory repo                       [string]
+  -p, --pass  Password (or API key) for basic auth                      [string]
+  -s, --snip  Return relative path                                     [boolean]
 
 For more information, go to https://github.com/kmerhi/artifactoid
 ```
