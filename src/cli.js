@@ -12,9 +12,22 @@ yargs.version()
 	.demandCommand(1, 'You need at least one command before moving on')
 	.help('h')
 	.alias('h', 'help')
-	.describe('u', 'User to connect to Artifactory repo')
-	.alias('u', 'user')
-	.describe('p', 'Password (or API key) for basic auth')
-	.alias('p', 'pass')
+	.options({
+		'u': {
+			alias: 'user',
+			describe: 'User to connect to Artifactory repo',
+			type: 'string'
+		},
+		'p': {
+			alias: 'pass',
+			describe: 'Password (or API key) for basic auth',
+			type: 'string'
+		},
+		's': {
+			alias: 'snip',
+			describe: 'Return relative path',
+			type: 'boolean'
+		},
+	})
 	.epilogue('For more information, go to https://github.com/kmerhi/artifactoid')
 	.argv;
