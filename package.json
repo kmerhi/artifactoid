@@ -1,6 +1,6 @@
 {
   "name": "artifactoid",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A command line tool to retrieve the URI of the latest artifact from an Artifactory repository",
   "preferGlobal": true,
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint ./src/index.js",
     "coverage": "jest --coverage",
-	"codacy" : "cat ./coverage/lcov.info | codacy-coverage",
+    "codacy": "cat ./coverage/lcov.info | codacy-coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "yarn lint && yarn coverage && yarn coveralls"
   },
