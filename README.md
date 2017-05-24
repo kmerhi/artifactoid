@@ -35,6 +35,23 @@ Options:
 For more information, go to https://github.com/kmerhi/artifactoid
 ```
 
+## Examples
+Assuming you have an artifact called `productX` in artifactory where you are tracking snapshots of the artifact.  Let's say you don't know the latest version and snapshot information - you can use artifactoid to get it the path for you.
+
+Let's say the path to the artifact is `http://host:port/artifactory/builds-snapshot/com/company/productX`
+
+```sh
+$ artifactoid -u some_user:some_password 
+http://host:port/artifactory/builds-snapshot/com/shinydocs/productX
+
+# return the full path
+> http://host:port/artifactory/builds-snapshot-local/com/company/productX/1.2.13-SNAPSHOT/productX-1.2.13-20170504.204849-14.war
+
+# return the snipped if the -s flag is passed
+> builds-snapshot-local/com/company/productX/1.2.13-SNAPSHOT/productX-1.2.13-20170504.204849-14.war
+```
+
+
 ## MIT License
 
 Copyright (c) 2017 Khalid Merhi
