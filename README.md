@@ -11,13 +11,13 @@ A command line experimental tool to retrieve the latest SNAPSHOT URI of an artif
 
 ## Install
 
-```sh
+```console
 npm install -g artifactoid
 ```
 
 ## Usage 
 
-```sh
+```console
 Usage: artifactoid <command> [options]
 
 Commands:
