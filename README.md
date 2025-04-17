@@ -1,6 +1,5 @@
 # Artifactoid
 
-utm_source=github.com&utm_medium=referral&utm_content=kmerhi/artifactoid&utm_campaign=badger)
 [![NPM Version](http://img.shields.io/npm/v/artifactoid.svg)](https://www.npmjs.org/package/artifactoid)
 [![Build Status](https://travis-ci.org/kmerhi/artifactoid.svg?branch=master)](https://travis-ci.org/kmerhi/artifactoid)
 [![Coverage Status](https://coveralls.io/repos/github/kmerhi/artifactoid/badge.svg?branch=master)](https://coveralls.io/github/kmerhi/artifactoid?branch=master)
